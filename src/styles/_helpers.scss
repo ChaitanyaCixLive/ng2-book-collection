@@ -1,0 +1,360 @@
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-size: len(1);
+}
+
+.bixSizingContent { box-sizing: content-box }
+.bixSizingBorder { box-sizing: border-box !important; }
+
+.block {display: block}
+.inlineBlock {display: inline-block}
+.inline {display: inline}
+
+.relative {position: relative}
+.absolute {position: absolute}
+
+.left {text-align: left}
+.center {text-align: center}
+.right {text-align: right}
+.middle { vertical-align: middle }
+.verticalAlignTop { vertical-align: top }
+
+.floatRight {float: right}
+.floatLeft {float: left}
+
+.hidden {display: none !important;}
+
+.noOverflow { overflow: hidden;  }
+.overflow { overflow: auto; }
+.noOverflowY {overflow-y: hidden}
+
+.white { color: white }
+.black { color: black }
+.placeholderBlack {
+  &::placeholder {
+    color: black;
+  }
+}
+.placeholderWhite {
+  &::placeholder {
+    color: white;
+  }
+}
+.overlay {
+  background-color: transparentize(#193341, 0.6);
+}
+
+
+.whiteBack { background-color: white }
+.blackBack { background-color: black }
+.transparentBack { background-color: transparent }
+.transparent { color: transparent }
+.capitalize { text-transform: capitalize}
+
+.o0NoPointerEvents {
+  opacity: 0;
+  @extend .opacityTransition, .noPointerEvents;
+}
+.noPointerEvents {
+  pointer-events: none;
+}
+
+@each $number in 0 1 2 3 4 5 6 7 8 9 10 {
+  .z#{$number} {z-index: $number}
+  .o#{$number} { opacity: $number/10 }
+  .o0#{$number} { opacity: $number/100 }
+  .flex#{$number} { flex: $number }
+  .transparentizedWhite#{$number}Back { background-color: transparentize(white, $number / 10) }
+  .transparentizedWhite#{$number} { color: transparentize(white, $number / 10) }
+}
+.z-1 { z-index: -1 }
+
+@each $number in 0 1 2 3 4 5 {
+  .fontSize#{$number}f { font-size: len($number) }
+  .fontSize#{$number}hf { font-size: len($number + .5) }
+}
+
+@each $number in 0 1 2 3 4 5 6 7 8 9 10 {
+  .w#{$number} { width: lenRound($number); min-width: lenRound($number) }
+  .h#{$number} { height: lenRound($number); min-height: lenRound($number) }
+  .maxW#{$number} { max-width: lenRound($number) }
+  .maxH#{$number} { max-height: lenRound($number) }
+  .minW#{$number} { min-width: lenRound($number) }
+  .minH#{$number} { min-height: lenRound($number) }
+  .pad#{$number} { padding: lenRound($number) }
+  .lineH#{$number} { line-height: lenRound($number) }
+  html .padTop#{$number} { padding-top: lenRound($number) }
+  html .padRight#{$number} { padding-right: lenRound($number) }
+  html .padBottom#{$number} { padding-bottom: lenRound($number) }
+  html .padLeft#{$number} { padding-left: lenRound($number) }
+
+  //halves
+  .w#{$number}h { width: lenRound($number + .5); min-width: lenRound($number + .5) }
+  .h#{$number}h { height: lenRound($number + .5); min-height: lenRound($number + .5) }
+  .minW#{$number}h { min-width: lenRound($number + .5) }
+  .minH#{$number}h { min-height: lenRound($number + .5) }
+  .pad#{$number}h { padding: lenRound($number + .5) }
+  html .padTop#{$number}h { padding-top: lenRound($number + .5) }
+  html .padRight#{$number}h { padding-right: lenRound($number + .5) }
+  html .padBottom#{$number}h { padding-bottom: lenRound($number + .5) }
+  html .padLeft#{$number}h { padding-left: lenRound($number + .5) }
+  .lineH#{$number}h { line-height: lenRound($number + .5) }
+}
+
+@each $number in -3 -2 -1 0 1 2 3 4 5 6 7 8 9 10 {
+  .mar#{$number} { margin: lenRound($number) }
+  html .marTop#{$number} { margin-top: lenRound($number) }
+  html .marRight#{$number} { margin-right: lenRound($number) }
+  html .marBottom#{$number} { margin-bottom: lenRound($number) }
+  html .marLeft#{$number} { margin-left: lenRound($number) }
+  // 'h' means 'and a half'
+  html .marTop#{$number}h { margin-top: lenRound($number + sign($number, .5)) }
+  html .marRight#{$number}h { margin-right: lenRound($number + sign($number, .5)) }
+  html .marBottom#{$number}h { margin-bottom: lenRound($number + sign($number, .5)) }
+  html .marLeft#{$number}h { margin-left: lenRound($number + sign($number, .5)) }
+  @if $number == 0 {
+    html .marTop-0h { margin-top: lenRound(-.5) }
+    html .marRight-0h { margin-right: lenRound(-.5) }
+    html .marBottom-0h { margin-bottom: lenRound(-.5) }
+    html .marLeft-0h { margin-left: lenRound(-.5) }
+  }
+  .left#{$number} { left: len($number) }
+  .right#{$number} { right: len($number) }
+  .top#{$number} { top: len($number) }
+  .bottom#{$number} { bottom: len($number) }
+
+  .left#{$number}h { left: len($number + .5) }
+  .right#{$number}h { right: len($number + .5) }
+  .top#{$number}h { top: len($number + .5) }
+  .bottom#{$number}h { bottom: len($number + .5) }
+}
+
+.noFontSize { font-size: 0 }
+.circleShadow {
+  box-shadow: 0 0 0 lenRound(1) white;
+}
+
+@each $number in 0 1 2 3 4 5 {
+  .fontSize#{$number}f { font-size: len($number) }
+  .fontSize#{$number}hf { font-size: len($number + .5) }
+}
+
+@each $number in 1 2 3 4 5 6 {
+  .flexItemsPerRow#{$number} {
+    display: flex;
+    flex-wrap: wrap;
+    > * {
+      flex-basis: #{100%/$number};
+
+      &:nth-last-child(-n + #{$number}) {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.coverBack {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.objectFitCover {
+  object-fit: cover;
+}
+.objectFitContain {
+  object-fit: contain;
+}
+
+.superscript {
+  vertical-align: super;
+  font-size: .4em;
+}
+.borderRadiusBugFix {
+  opacity: 0.99;
+}
+
+.circle {border-radius: 50%}
+.rotate90 { transform: rotate(90deg) }
+.rotate-90 { transform: rotate(-90deg) }
+.pointer { cursor: pointer }
+.marAuto { margin: auto }
+.noBackfaceVisibility { backface-visibility: hidden }
+.noBackground { background: none }
+
+.scrollTarget {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.opacityTransition {
+  transition: opacity .4s $ease;
+}
+.baseTransition {
+  transition: .4s $ease;
+}
+.transformTransition {
+  transition: transform .4s;
+}
+.colorTransition {
+  transition: color .4s $ease;
+}
+.perspective {
+  perspective: 1000px;
+}
+
+.takeHalf {
+  width: 50%;
+}
+.whiteSpacePreWrap {
+  white-space: pre-wrap;
+}
+
+.absoluteSpread {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.fixedSpread {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.backgroundPositionYCenter {
+  background-position-y: 50%;
+}
+.backgroundPositionYBottom {
+  background-position-y: 100%;
+}
+
+// FLEXING
+
+lay-flex-column, .flexColumn, lay-inlineFlex-column, .inlineFlexColumn {
+  flex-direction: column;
+}
+lay-flex-column, .flexColumn {
+  display: flex;
+}
+lay-inlineFlex-column, .inlineFlexColumn, lay-inlineFlex-row, .inlineFlexRow {
+  display: inline-flex;
+}
+lay-flex-row, .flexRow {
+  display: flex;
+  flex-direction: row;
+}
+.flexRowReverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.flexNoWrap {
+  flex-wrap: nowrap;
+}
+.flexWrap {
+  flex-wrap: wrap;
+}
+.overflowXAuto { overflow-x: auto}
+.overflowXScroll { overflow-x: scroll }
+.whiteSpaceNoWrap { white-space: nowrap }
+.whiteSpaceNormal {white-space: normal}
+.overflowScrollingTouch {-webkit-overflow-scrolling: touch}
+
+.spaceBetween { justify-content: space-between }
+.spaceAround { justify-content: space-around }
+.spaceAroundEqualEdges {
+  justify-content: space-between;
+  &::before, &::after {
+    content: "";
+  }
+}
+
+.justifyStart { justify-content: flex-start }
+.justifyEnd { justify-content: flex-end }
+.justifyCenter { justify-content: center }
+
+.flexAlignCenter { align-items: center }
+.flexAlignStart { align-items: flex-start }
+.flexAlignEnd { align-items: flex-end }
+.flexAlignStretch { align-items: stretch }
+.flexAlignBaseline { align-items: baseline }
+.textOverflowEllipsis { text-overflow: ellipsis }
+.flexAlignSelfFlexStart { align-self: flex-start }
+.flexAlignSelfStretch { align-self: stretch }
+.noListStyle { list-style: none }
+.flexCenter { @extend .flexRow, .justifyCenter, .flexAlignCenter }
+.flexCenterColumn { @extend .flexColumn, .justifyCenter, .flexAlignCenter }
+
+.absoluteCenterX {
+  position: absolute;
+  @extend  .centerX
+}
+.centerX {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.centerY {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.absoluteCenterY {
+  position: absolute;
+  @extend .centerY
+}
+.absoluteCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+.promoteLayerGpuLayer {
+  transform: translateZ(0);
+}
+.fixed {position: fixed}
+.fullWidth { width: 100% }
+.fullHeight { height: 100% }
+.fullMinWidth { min-width: 100% }
+.fullMinHeight { min-height: 100% }
+.fullMaxWidth { max-width: 100% }
+.fullMaxHeight { max-height: 100% }
+.inheritWidth {width: inherit}
+.inheritHeight {height: inherit}
+.inheritTransition { transition: inherit }
+
+.inheritRadius {
+  border-radius: inherit;
+}
+.inheritLeftRadius {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.inheritRightRadius {
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.inheritTopRadius {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.inheritBottomRadius {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+.wordBreakAll { word-break: break-all }
+.borderCollapseSeparate {border-collapse: separate}
+
+.gray { color: $clGray }
+.grayLight { color: $clGrayLight }
+.grayLighter { color: $clGrayLighter }
+.grayLighterer { color: $clGrayLighterer }
+.grayBack { background-color: $clGray }
+.grayLightBack { background-color: $clGrayLight }
+.grayLighterBack { background-color: $clGrayLighter }
+.grayLightererBack { background-color: $clGrayLighterer }
+.grayLightestBack { background-color: $clGrayLightest }
+.brand { color: $clBrand; }
+.brandBack { background-color: $clBrand; }
